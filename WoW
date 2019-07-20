@@ -1,0 +1,55 @@
+//
+//  GameViewController.swift
+//  WoW
+//
+//  Created by Naisi Zhen on 7/13/19.
+//  Copyright © 2019 Naisi Zhen. All rights reserved.
+//
+import UIKit
+
+class ViewController: UIViewController {
+    var currentValue = 0
+    @IBOutlet var slider: UISlider!
+     override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+     @IBAction func genericButtonAction(_ sender: UIButton) {
+        switch sender.tag{
+        case 101:
+//            numberSlider.setValue(7, animated: true)
+            navigateToNextScreen()
+        default:
+            showAlert()
+        }
+    }
+    @IBAction func valueChanged(_ slider: UISlider){
+        currentValue = lroundf(slider.value)
+    }
+
+    @IBAction func showAlert(){
+        let differnce = abs(currentValue - targetValue)
+        
+        let title: String
+        if differnce <5 {
+            title = "Good Job!"
+        } else {
+            title = "Pretty close"
+        }
+
+        
+        let Alert = UIAlertController(title: title, message: message , preferredStyle: .alert)
+        
+        Alert.addAction(action)
+        present(Alert, animated: true, completion: nil)
+    }
+     // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    
+}
